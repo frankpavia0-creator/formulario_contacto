@@ -144,12 +144,12 @@
             <form id="contactForm" onsubmit="enviarWhatsApp(event)">
                 <div class="input-group">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" required placeholder="Tu nombre completo">
+                    <input type="text" id="nombre" required maxlength="70" placeholder="Tu nombre completo">
                 </div>
 
                 <div class="input-group">
                     <label for="telefono">Teléfono:</label>
-                    <input type="tel" id="telefono" required placeholder="Tu número de teléfono">
+                    <input type="tel" id="telefono" required maxlength="15" placeholder="Tu número de teléfono">
                 </div>
 
                 <div class="input-group">
@@ -181,6 +181,16 @@
         let num2 = Math.floor(Math.random() * 10) + 1;
         let respuestaCorrecta = num1 + num2;
         document.getElementById('captchaQuestion').innerText = `¿Cuánto es ${num1} + ${num2}?`;
+
+        // Restringir entrada en el campo de Nombre (Bloquea números y limita a 70 caracteres)
+        document.getElementById('nombre').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[0-9]/g, '').slice(0, 70);
+        });
+
+        // Restringir entrada en el campo de Teléfono (Bloquea letras/símbolos excepto + y limita a 15 caracteres)
+        document.getElementById('telefono').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9+]/g, '').slice(0, 15);
+        });
 
         function enviarWhatsApp(event) {
             event.preventDefault();
