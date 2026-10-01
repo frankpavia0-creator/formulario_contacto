@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis datos</title>
+</head>
+<body>
+
+    <h2>Mis datos</h2>
+
+    <input id="nombre" placeholder="Nombre"><br><br>
+    <input id="edad" placeholder="Edad"><br><br>
+    <input id="ciudad" placeholder="Ciudad"><br><br>
+
+    <button id="miBoton">Mostrar Datos</button>
+
+    <h3 id="resultado"></h3>
+
+    <script>
+        // Capturamos los elementos una sola vez
+        const boton = document.getElementById("miBoton");
+        const resultado = document.getElementById("resultado");
+
+        // Escuchamos el clic desde JavaScript
+        boton.addEventListener("click", () => {
+            let nombre = document.getElementById("nombre").value;
+            let edad = document.getElementById("edad").value;
+            let ciudad = document.getElementById("ciudad").value;
+
+            // Validación simple
+            if (nombre === "" || edad === "" || ciudad === "") {
+                resultado.innerHTML = "Por favor, completa todos los campos.";
+                return;
+            }
+
+            // Mostramos los datos usando Template Literals (comillas invertidas ``)
+            resultado.innerHTML = `
+                Hola <strong>${nombre}</strong>, tienes <strong>${edad}</strong> años y vives en <strong>${ciudad}</strong>.
+            `;
+        });
+    </script>
+
+</body>
+</html>
