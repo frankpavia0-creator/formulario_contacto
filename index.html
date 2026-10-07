@@ -87,49 +87,57 @@
             border-color: #25d366;
         }
 
-        /* Estilo para la caja del widget de Clima Open-Meteo */
+        /* Estilo integrado y unificado para el widget del Clima */
         .weather-box {
-            background: #1e1e2f;
-            color: #ffffff;
+            background: #f8f9fa;
             padding: 15px;
             border-radius: 8px;
-            margin-bottom: 18px;
-            border: 1px solid #25d366;
+            margin-bottom: 15px;
+            border: 2px solid #e9ecef;
         }
 
         .weather-box h3 {
-            font-size: 15px;
-            margin-bottom: 8px;
+            font-size: 14px;
+            margin-bottom: 10px;
             color: #25d366;
             display: flex;
             align-items: center;
             gap: 6px;
+            font-weight: bold;
         }
 
         .weather-inputs {
             display: flex;
             gap: 8px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .weather-inputs input {
-            padding: 6px;
-            font-size: 12px;
-            border-radius: 4px;
-            border: 1px solid #555;
-            background: #2a2a3f;
-            color: #fff;
+            padding: 8px 10px;
+            font-size: 13px;
+            border-radius: 6px;
+            border: 2px solid #cccccc;
+            background: #ffffff;
+            color: #333;
+            width: 100%;
+        }
+
+        .weather-inputs input:focus {
+            border-color: #25d366;
+            outline: none;
         }
 
         .btn-weather {
             background-color: #25d366;
             color: white;
             border: none;
-            padding: 6px 12px;
-            font-size: 12px;
+            padding: 8px 14px;
+            font-size: 13px;
             font-weight: bold;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s;
         }
 
         .btn-weather:hover {
@@ -138,12 +146,12 @@
 
         #weatherResult {
             font-size: 13px;
-            margin-top: 8px;
-            color: #a9b7c6;
-            background: #111119;
-            padding: 8px;
-            border-radius: 4px;
-            font-family: monospace;
+            color: #333333;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #dcdcdc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .captcha-box {
@@ -239,7 +247,7 @@
                     <textarea id="comentario" rows="3" required placeholder="Escribe tu mensaje..."></textarea>
                 </div>
 
-                <!-- Widget Integrado con la API de Open-Meteo -->
+                <!-- Widget del Clima Integrado y Armonizado -->
                 <div class="weather-box">
                     <h3><i class="fa-solid fa-cloud-sun"></i> Consultar Clima Local (Open-Meteo)</h3>
                     <div class="weather-inputs">
@@ -302,7 +310,7 @@
                     const temp = data.current.temperature_2m;
                     const viento = data.current.wind_speed_10m;
                     const hora = data.current.time;
-                    resultadoDiv.innerHTML = `Hora: ${hora}<br>Temp: ${temp} °C | Viento: ${viento} km/h`;
+                    resultadoDiv.innerHTML = `<strong>Hora:</strong> ${hora}<br><strong>Temp:</strong> ${temp} °C | <strong>Viento:</strong> ${viento} km/h`;
                 } else {
                     resultadoDiv.innerText = "No se pudieron obtener los datos.";
                 }
@@ -326,13 +334,13 @@
             const telefono = document.getElementById('telefono').value;
             const comentario = document.getElementById('comentario').value;
 
-            // Número de WhatsApp de EE. UU. (Código de país 1 + 10 dígitos)
+            // Número de WhatsApp
             const tuNumeroWhatsApp = "13478814790"; 
 
             // Estructurar el mensaje
             const mensaje = "Hola, mi nombre es " + nombre + ". Mi teléfono es: " + telefono + ". Comentario: " + comentario;
 
-            // URL directa para abrir el chat de WhatsApp con tu número
+            // URL directa para abrir el chat de WhatsApp
             const urlWhatsApp = "https://wa.me/" + tuNumeroWhatsApp + "?text=" + encodeURIComponent(mensaje);
 
             // Abrir la ventana de WhatsApp
